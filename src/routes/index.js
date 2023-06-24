@@ -62,8 +62,3 @@ export async function getAccessList(_url, _cb, _props) {
   const module = await import('./AccessList.jsx');
   return module.default;
 }
-
-export async function getLoginPage(_url, _cb, _props) {
-  const module = await import('./LoginPage.jsx');
-  return module.default;
-}

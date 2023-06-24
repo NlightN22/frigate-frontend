@@ -16,11 +16,6 @@ import AppBar from './AppBar';
 
 export default function App() {
 
-  const client = axios.create({ baseURL: `${baseUrl}`, timeout: 20000, withCredentials: true })
-  const fetcher = (path: any, params?: any) => {
-    return client.get(path, { params }).then((res) => res.data)
-  }
-
   const [access, setAccess] = useState<'load' | 'true' | 'false'>('load')
   const [logout, setLogout] = useState(false)
 
@@ -32,17 +27,13 @@ export default function App() {
     axios.create({ baseURL: `${baseUrl}`, timeout: 20000, withCredentials: true })
       .get('auth/status')
       .then((res) => {
-        console.log("res.data:", res.data)
-        console.log("res.status", res.status)
         if (res.status === 200) {
-          console.log(res.data)
-          if (res.data) setAccess('true')
+          if (res.data && res.data == true) setAccess('true')
           else setAccess('false')
         }
       })
       .catch((e) => {
         if (e instanceof AxiosError) {
-          console.error(e)
           if (e.code === "ERR_BAD_REQUEST" && e.response?.status === 403) { //403
             setAccess('false')
           }
@@ -51,10 +42,8 @@ export default function App() {
   })
 
   useEffect(() => {
-    console.log("access:", access)
   }, [access])
   useEffect(() => {
-    console.log("logout:", logout)
   }, [logout])
 
   const { data: config } = useSWR('config');
@@ -74,6 +63,7 @@ export default function App() {
           <DarkModeProvider>
             <DrawerProvider>
               <div data-testid="app" className="w-full">
+                <AppBar />
                 <AppBar onLogout={handleLogout} />
                 {!config ? (
                   <div className="flex flex-grow-1 min-h-screen justify-center items-center">

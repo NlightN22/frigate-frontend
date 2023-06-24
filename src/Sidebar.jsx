@@ -20,7 +20,6 @@ export default function Sidebar() {
   useEffect( () => {
     if ( roles && roles.includes('admin')) setAdmin(true)
     else setAdmin(false)
-    console.log('role admin:', admin )
   }, [roles])
 
   

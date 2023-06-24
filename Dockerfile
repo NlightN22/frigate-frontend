@@ -1,17 +1,15 @@
 # syntax=docker/dockerfile:1
+# docker build --pull --rm -f "Dockerfile" -t oncharterliz/frigate-frontend:latest "."
 
-FROM nginx:latest AS frigate-frontend
+FROM node:18-alpine AS frigate-frontend
 
-WORKDIR /
-# COPY web/package.json web/package-lock.json ./
-# RUN npm install
+WORKDIR /app
+COPY package.json package-lock.json ./
 
-COPY ./dist/ /usr/share/nginx/html/
+RUN npm install
 
-RUN service nginx restart
+COPY . .
 
-# RUN npm run build 
-#     && mv dist/BASE_PATH/monacoeditorwork/* dist/assets/ \
-#     && rm -rf dist/BASE_PATH
+CMD [ "npm", "run", "dev" ]
 
-EXPOSE 80
+EXPOSE 5173

@@ -1,14 +1,8 @@
 .idea/*
 node_modules/*
+dist/*
+docker_dist/*
 docker-compose*
 .env
 *.md
 .gitignore
-
-*.pyc
-.git
-*.mp4
-*.jpg
-*.db
-*.ts
-.npm

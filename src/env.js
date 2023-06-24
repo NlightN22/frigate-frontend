@@ -1,2 +1,6 @@
 export const ENV = import.meta.env.MODE;
-export const API_HOST = ENV === 'production' ? '' : 'http://localhost:3000/';
+let url = import.meta.env.VITE_ACL_URL;
+if (!url.endsWith('/')) {
+    url = url.replace(/\/?$/, '/');
+  }
+export const API_HOST = url

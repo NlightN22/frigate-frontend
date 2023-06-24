@@ -2,6 +2,7 @@ import { useEffect } from 'preact/hooks';
 import { baseUrl } from "../api/baseUrl";
 
 const LoginPage = ({ logout }) => {
+
   useEffect(() => {
     if (logout) {
       sessionStorage.clear()
