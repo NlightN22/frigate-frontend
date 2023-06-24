@@ -1,0 +1,14 @@
+.idea/*
+node_modules/*
+docker-compose*
+.env
+*.md
+.gitignore
+
+*.pyc
+.git
+*.mp4
+*.jpg
+*.db
+*.ts
+.npm
