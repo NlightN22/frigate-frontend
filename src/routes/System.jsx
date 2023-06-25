@@ -14,6 +14,7 @@ import copy from 'copy-to-clipboard';
 import { About } from '../icons/About';
 
 const emptyObject = Object.freeze({});
+axios.defaults.withCredentials = true
 
 export default function System() {
   const [state, setState] = useState({ showFfprobe: false, ffprobe: '' });

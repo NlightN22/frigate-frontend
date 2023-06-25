@@ -8,6 +8,8 @@ import type { TimelineEvent } from '../Timeline/TimelineEvent';
 import { HistoryHeader } from './HistoryHeader';
 import { HistoryVideo } from './HistoryVideo';
 
+axios.defaults.withCredentials = true
+
 export default function HistoryViewer({ camera }: {camera: string}) {
   const searchParams = {
     before: null,

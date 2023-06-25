@@ -46,7 +46,11 @@ export default function App() {
   useEffect(() => {
   }, [logout])
 
-  const { data: config } = useSWR('config');
+  const { data: config, error } = useSWR('config')
+  
+  useEffect( () => {
+    if (error?.status === 403) setAccess('false')
+  }, [error])
 
   return (
     logout == true ?

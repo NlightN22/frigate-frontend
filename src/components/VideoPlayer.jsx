@@ -4,11 +4,16 @@ import videojs from 'video.js';
 import 'videojs-playlist';
 import 'video.js/dist/video-js.css';
 
-export default function VideoPlayer({ children, options, seekOptions = {forward:30, backward: 10}, onReady = () => {}, onDispose = () => {} }) {
+export default function VideoPlayer({ children, options, seekOptions = { forward: 30, backward: 10 }, onReady = () => { }, onDispose = () => { } }) {
   const playerRef = useRef();
 
   useEffect(() => {
     const defaultOptions = {
+      html5: {
+        hls: {
+          withCredentials: true
+        }
+      },
       controls: true,
       controlBar: {
         skipButtons: seekOptions,

@@ -30,6 +30,7 @@ import TimeAgo from '../components/TimeAgo';
 import TimelineSummary from '../components/TimelineSummary';
 
 const API_LIMIT = 25;
+axios.defaults.withCredentials = true
 
 const daysAgo = (num) => {
   let date = new Date();
